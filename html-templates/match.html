@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Moss Match</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css"
+          integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.css"
+          integrity="sha512-cbQXwDFK7lj2Fqfkuxbo5iD1dSbLlJGXGpfTDqbggqjHJeyzx88I3rfwjS38WJag/ihH7lzuGlGHpDBymLirZQ=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-highlight/prism-line-highlight.min.css"
+          integrity="sha512-nXlJLUeqPMp1Q3+Bd8Qds8tXeRVQscMscwysJm821C++9w6WtsFbJjPenZ8cQVMXyqSAismveQJc0C1splFDCA=="
+          crossorigin="anonymous"/>
+
+    <style>
+        @media screen {
+            html, body {
+                height: 100%;
+            }
+
+            .code-container {
+                overflow-y: scroll;
+            }
+        }
+
+        @media print {
+            .code-container {
+                overflow-y: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container-fluid h-100 d-flex flex-column">
+    <div class="row flex-shrink-0" style="max-height: 150px; overflow-y: scroll">
+        <div class="col">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <table class="m-0 table table-bordered table-hover table-sm table-striped" id="matches_nav">
+                            <thead>
+                            <tr>
+                                <th class="text-right"></th>
+                                <th></th>
+                                <th class="text-right"></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row flex-fill" style="min-height: 0;">
+        <div class="code-container col-6 mh-100 p-0">
+            <pre data-line="1-1" id="left_code_container"><code class="language-c" id="left_code"></code></pre>
+        </div>
+        <div class="border-left code-container col-6 mh-100 p-0">
+            <pre data-line="1-1" id="right_code_container"><code class="language-c" id="right_code"></code></pre>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
+        integrity="sha512-YBk7HhgDZvBxmtOfUdvX0z8IH2d10Hp3aEygaMNhtF8fSOvBZ16D/1bXZTJV6ndk/L/DlXxYStP8jrF77v2MIg=="
+        crossorigin="anonymous"></script>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.css"
+      integrity="sha512-cbQXwDFK7lj2Fqfkuxbo5iD1dSbLlJGXGpfTDqbggqjHJeyzx88I3rfwjS38WJag/ihH7lzuGlGHpDBymLirZQ=="
+      crossorigin="anonymous"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-highlight/prism-line-highlight.min.js"
+        integrity="sha512-MGMi0fbhnsk/a/9vCluWv3P4IOfHijjupSoVYEdke+QQyGBOAaXNXnwW6/IZSH7JLdknDf6FL6b57o+vnMg3Iw=="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-c.min.js"
+        integrity="sha512-T6Lco61aWqCKSznWkd38lf159pD0+EwZ9UCEv6ARAvaWFiy/UHtYgOmlasT8lq5Ck17ZNHzbe5eHUablTGRXxw=="
+        crossorigin="anonymous"></script>
+</body>
+</html>
