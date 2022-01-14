@@ -115,12 +115,14 @@ def prettify_moss_match(match_html_template_path: pathlib.Path, source_dir: path
 def main(argv):
     args_parser = argparse.ArgumentParser(description="Prettify an HTML report output by MOSS.")
     args_parser.add_argument("--moss-matches-dir", required=True, help="Directory containing MOSS matches.")
-    args_parser.add_argument("--source-dir", required=True, help="Directory containing all source directories submitted to moss.")
-    args_parser.add_argument("--templates-dir", required=True, help="Directory containing HTML templates for pretty output.")
+    args_parser.add_argument("--moss-submission-root-dir", required=True,
+                             help="Root directory when submitting source to moss.")
+    args_parser.add_argument("--templates-dir", required=True,
+                             help="Directory containing HTML templates for pretty output.")
     args_parser.add_argument("--output-dir", required=True)
     parsed_args = args_parser.parse_args(argv[1:])
     moss_matches_dir = pathlib.Path(parsed_args.moss_matches_dir)
-    source_dir = pathlib.Path(parsed_args.source_dir)
+    source_dir = pathlib.Path(parsed_args.moss_submission_root_dir)
     templates_dir = pathlib.Path(parsed_args.templates_dir)
     output_dir = pathlib.Path(parsed_args.output_dir)
 
