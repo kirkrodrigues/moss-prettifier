@@ -32,6 +32,10 @@ def main(argv):
         with open(match_output_path, "wb") as f:
             f.write(r.content)
 
+        # Print progress
+        if i % 10 == 0:
+            print(f'\rDownloaded {i} matches')
+
         # Wait before the next download to avoid MOSS throttling us
         time.sleep(1)
 
