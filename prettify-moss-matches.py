@@ -3,6 +3,15 @@ from bs4 import BeautifulSoup
 import pathlib
 import sys
 
+CSS_BACKGROUND_COLORS = [
+    "hsla(0 100% 50% / 10%)",
+    "hsla(235 100% 50% / 10%)",
+    "hsla(120 100% 50% / 10%)",
+    "hsla(290 100% 50% / 10%)",
+    "hsla(50 100% 50% / 10%)",
+    "hsla(180 100% 50% / 10%)",
+]
+
 
 def prettify_moss_match(match_html_template_path: pathlib.Path, source_dir: pathlib.Path, moss_match_top_file_path: pathlib.Path, output_path: pathlib.Path):
     # Load raw match
@@ -53,9 +62,14 @@ def prettify_moss_match(match_html_template_path: pathlib.Path, source_dir: path
 
     # Write rows for each snippet of the match
     matches_nav_tbody = matches_nav_table.find("tbody")
+    style = template_soup.select_one("style")
     left_line_ranges = []
     right_line_ranges = []
+    background_color_ix = 0
     for row in moss_table_rows[1:]:
+        background_color = CSS_BACKGROUND_COLORS[background_color_ix]
+        background_color_ix = (background_color_ix + 1) % len(CSS_BACKGROUND_COLORS)
+
         moss_cells = row.find_all("td")
 
         # Parse left match info
@@ -74,26 +88,31 @@ def prettify_moss_match(match_html_template_path: pathlib.Path, source_dir: path
         tr = template_soup.new_tag("tr")
 
         td = template_soup.new_tag("td", attrs={"class": "text-right"})
-        anchor = template_soup.new_tag("a", attrs={"href": "#left_code." + left_line_range_begin})
+        anchor = template_soup.new_tag("a", attrs={"href": "#left_code_container." + left_line_range_begin})
         anchor.string = left_line_range
         td.append(anchor)
         tr.append(td)
 
-        td = template_soup.new_tag("td")
+        td = template_soup.new_tag("td", attrs={"style": f"background-color:{background_color};"})
         td.string = left_match_percent + '%'
         tr.append(td)
 
-        td = template_soup.new_tag("td", attrs={"class": "text-right"})
+        td = template_soup.new_tag("td",
+                                   attrs={"class": "text-right", "style": f"background-color:{background_color};"})
         td.string = right_match_percent + '%'
         tr.append(td)
 
         td = template_soup.new_tag("td")
-        anchor = template_soup.new_tag("a", attrs={"href": "#right_code." + right_line_range_begin})
+        anchor = template_soup.new_tag("a", attrs={"href": "#right_code_container." + right_line_range_begin})
         anchor.string = right_line_range
         td.append(anchor)
         tr.append(td)
 
         matches_nav_tbody.append(tr)
+
+        # Add background colour to code snippets
+        style.append(f"div[data-range=\"{left_line_range}\"]{{background-color: {background_color};}}")
+        style.append(f"div[data-range=\"{right_line_range}\"]{{background-color: {background_color};}}")
 
     # Highlight matched snippets in code
     left_pre["data-line"] = ','.join(left_line_ranges)

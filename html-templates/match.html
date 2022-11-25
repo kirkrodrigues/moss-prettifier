@@ -20,6 +20,11 @@
           crossorigin="anonymous"/>
 
     <style>
+        /* Override prismjs's background-color */
+        pre[class*=language-] {
+            background-color: inherit;
+        }
+
         .side-by-side-code {
             border-top: 1px solid #ccc;
             min-height: 0;
@@ -81,10 +86,10 @@
     </div>
     <div class="row side-by-side-code flex-fill">
         <div class="code-container col-6 mh-100 p-0">
-            <pre data-line="1-1" id="left_code_container"><code class="language-c" id="left_code"></code></pre>
+            <pre class="line-numbers" data-line="1-1" id="left_code_container"><code class="language-c" id="left_code"></code></pre>
         </div>
         <div class="border-left code-container col-6 mh-100 p-0">
-            <pre data-line="1-1" id="right_code_container"><code class="language-c" id="right_code"></code></pre>
+            <pre class="line-numbers" data-line="1-1" id="right_code_container"><code class="language-c" id="right_code"></code></pre>
         </div>
     </div>
 </div>
